@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>ReplyMate — AI Email Response Assistant</title>
+
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+
+<body>
+  <header class="app-header">
+    <div class="header-inner">
+      <div>
+        <div class="brand">ReplyMate</div>
+        <div class="tagline">Understand. Draft. Review. Reply.</div>
+      </div>
+
+      <div class="status-badge">
+        <span class="status-dot"></span>
+        Local AI
+      </div>
+    </div>
+  </header>
+
+  <main class="app-container">
+
+    <!-- EMAIL INPUT -->
+    <section class="card">
+      <div class="section-heading">
+        <div>
+          <h1>Analyze an Email</h1>
+          <p>
+            Paste an incoming email and ReplyMate will analyze it
+            and prepare a response draft.
+          </p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="subject">Email Subject</label>
+        <input
+          id="subject"
+          type="text"
+          placeholder="e.g. Delivery delay"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="emailBody">Customer Email</label>
+        <textarea
+          id="emailBody"
+         rows="8"
+          placeholder="Paste the customer email here..."
+        ></textarea>
+      </div>
+
+      <div class="button-row">
+        <button id="analyzeButton" class="primary-button">
+          Analyze Email
+        </button>
+
+        <button id="newEmailButton" class="secondary-button">
+          New Email
+        </button>
+      </div>
+
+      <div id="errorMessage" class="error-message hidden"></div>
+    </section>
+
+    <!-- ANALYSIS -->
+    <section id="analysisSection" class="card hidden">
+
+      <div class="section-heading">
+        <div>
+          <h2>Email Analysis</h2>
+          <p>AI-generated understanding of the incoming email.</p>
+        </div>
+      </div>
+
+      <div class="analysis-grid">
+
+        <div class="analysis-item">
+          <span class="analysis-label">Intent</span>
+          <span id="intentValue" class="analysis-value"></span>
+        </div>
+
+        <div class="analysis-item">
+          <span class="analysis-label">Sentiment</span>
+          <span id="sentimentValue" class="analysis-value"></span>
+        </div>
+
+        <div class="analysis-item">
+          <span class="analysis-label">Urgency</span>
+          <span id="urgencyValue" class="analysis-value"></span>
+        </div>
+
+      </div>
+
+      <div class="content-block">
+        <h3>Summary</h3>
+        <p id="summaryValue"></p>
+      </div>
+
+      <div class="content-block">
+        <h3>Key Information</h3>
+        <ul id="keyInformationValue"></ul>
+      </div>
+
+      <div class="content-block">
+        <h3>Action Required</h3>
+        <p id="actionRequiredValue"></p>
+      </div>
+
+      <div class="content-block">
+        <h3>Missing Information</h3>
+        <ul id="missingInformationValue"></ul>
+      </div>
+
+    </section>
+
+    <!-- SUGGESTED RESPONSE -->
+    <section id="responseSection" class="card hidden">
+
+      <div class="section-heading">
+        <div>
+          <h2>Suggested Response</h2>
+          <p>
+            Review and edit this response before sending it to the customer.
+          </p>
+        </div>
+
+        <div class="human-review-badge">
+          Human Review Required
+        </div>
+      </div>
+
+      <textarea
+        id="responseValue"
+        class="response-editor"
+        rows="12"
+      ></textarea>
+
+      <div class="button-row response-actions">
+        <button id="copyButton" class="primary-button">
+          Copy Response
+        </button>
+      </div>
+
+      <div id="copyMessage" class="success-message hidden">
+        Response copied to clipboard.
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="app-footer">
+    <p>
+      ReplyMate processes emails locally using Ollama.
+      AI-generated content should be reviewed by a human before use.
+    </p>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>
